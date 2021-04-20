@@ -1,0 +1,1 @@
+# Rating-based team generator

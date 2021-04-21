@@ -22,3 +22,24 @@ for (let i = 0; i < 10; i++) {
   const playersContainer = document.getElementsByClassName('players-container')[0]
   playersContainer.appendChild(createPlayerAndRatingFields())
 }
+
+function populateSelects () {
+  const playersSelect = document.getElementById('players-select')
+  const teamsSelect = document.getElementById('teams-select')
+
+  for (let i = 2; i <= 100; i++) {
+    const option = document.createElement('option')
+    option.innerText = i
+    option.value = i
+    playersSelect.appendChild(option)
+  }
+
+  for (let i = 2; i <= 10; i++) {
+    const option = document.createElement('option')
+    option.innerText = i
+    option.value = i
+    teamsSelect.appendChild(option)
+  }
+}
+
+populateSelects()

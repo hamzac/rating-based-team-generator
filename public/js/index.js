@@ -43,3 +43,36 @@ function populateSelects () {
 }
 
 populateSelects()
+
+function ratingSelectUpdate () {
+  console.log('rating select update')
+}
+
+function playersSelectUpdate () {
+  console.log('players select update')
+}
+function teamsSelectUpdate () {
+  console.log('teams select update')
+}
+
+const ratingSelect = document.getElementById('rating-select')
+const playersSelect = document.getElementById('players-select')
+const teamsSelect = document.getElementById('teams-select')
+
+ratingSelect.addEventListener('change', ratingSelectUpdate)
+playersSelect.addEventListener('change', playersSelectUpdate)
+teamsSelect.addEventListener('change', teamsSelectUpdate)
+
+function addPlayer () {
+  console.log('add player')
+}
+
+function generateTeams () {
+  console.log('generate teams')
+}
+
+const addPlayerButton = document.getElementById('add-player-button')
+const generateTeamsButton = document.getElementById('generate-teams-button')
+
+addPlayerButton.addEventListener('click', addPlayer)
+generateTeamsButton.addEventListener('click', generateTeams)

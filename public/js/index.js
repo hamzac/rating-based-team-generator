@@ -31,6 +31,9 @@ function populateSelects () {
     const option = document.createElement('option')
     option.innerText = i
     option.value = i
+
+    if (i === 10) option.selected = 'selected'
+
     playersSelect.appendChild(option)
   }
 
@@ -38,6 +41,9 @@ function populateSelects () {
     const option = document.createElement('option')
     option.innerText = i
     option.value = i
+
+    if (i === 2) option.seleced = 'selected'
+    
     teamsSelect.appendChild(option)
   }
 }

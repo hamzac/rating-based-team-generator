@@ -97,6 +97,18 @@ function ratingSelectUpdate () {
 
 function playersSelectUpdate () {
   console.log('players select update')
+  const playersContainer = document.getElementsByClassName('players-container')[0]
+  const playerAndRatingFields = document.getElementsByClassName('player-div')
+  const currentPlayersAmount = playerAndRatingFields.length
+  const newPlayersAmount = this.value
+  const playersAmountDifference = newPlayersAmount - currentPlayersAmount
+
+  if (playersAmountDifference > 0) {
+    for (let i = 0; i < playersAmountDifference; i++) appendPlayerAndRatingField()
+  }
+  if (playersAmountDifference < 0) {
+    for (let i = 0; i < -playersAmountDifference; i++) playersContainer.removeChild(playersContainer.lastChild)
+  }
 }
 
 function teamsSelectUpdate () {

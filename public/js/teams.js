@@ -18,8 +18,7 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
 
   const games = []
   // each iteration, swap a random player from highest rated team with random player from lowest rated team
-  // for (let k = 0; k < numOfPlayers ** 2; k++) {
-  for (let k = 0; k < 1; k++) {
+  for (let k = 0; k < numOfPlayers ** 2; k++) {
     const ratings = teams.map((team) => {
       return team.reduce((sum, player) => sum + +player.rating, 0)
     })

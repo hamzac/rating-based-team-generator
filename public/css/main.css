@@ -27,7 +27,7 @@ body {
 .main-container {
   width: 1200px;
   margin: 0 auto;
-  border: solid;
+  /* border: solid; */
   border-color: red;
 }
 
@@ -55,7 +55,7 @@ body {
 .bottom-inner {
   float: left;
   width: 100%;
-  border: solid;
+  /* border: solid; */
   border-color: yellow;
 }
 
@@ -76,6 +76,7 @@ body {
 }
 
 .team-container {
+  display: inline-block;
   border: solid;
   border-color: #E9E9E9;
   border-radius: 2px;

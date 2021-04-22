@@ -1,6 +1,6 @@
 'use strict'
 
-import { generateTeams } from './teams.js'
+import { generateRandomTeams, generateTeams } from './teams.js'
 
 // Create and populate UI elements
 
@@ -15,7 +15,7 @@ function createPlayerAndRatingFields () {
   const ratingField = document.createElement('input')
   ratingField.type = 'text'
   ratingField.className = 'rating-field'
-  ratingField.placeholder = 5
+  ratingField.type = 'number'
 
   container.appendChild(playerField)
   container.appendChild(ratingField)
@@ -72,20 +72,78 @@ function addPlayerListener () {
   console.log('add player')
 }
 
+function createTeamElement (team, teamNumber, useRatings) {
+  const container = document.createElement('div')
+  container.className = 'team-container'
+
+  const teamName = document.createElement('p')
+  teamName.innerText = `Team ${teamNumber}`
+  container.appendChild(teamName)
+
+  if (useRatings) {
+    let ratingSum = 0
+    for (const player of team) {
+      ratingSum += +player.rating
+    }
+    const teamRating = document.createElement('p')
+    teamRating.innerText = `Team rating: ${ratingSum}`
+    container.appendChild(teamRating)
+  }
+
+  for (const player of team) {
+    const playerHTML = document.createElement('p')
+    playerHTML.innerText = `${player.name} `
+    if (useRatings) playerHTML.innerText += `${player.rating}`
+
+    container.appendChild(playerHTML)
+  }
+
+  return container
+}
+
 function generateTeamsListener () {
   console.log('generate teams')
+
+  // clear any team elements if there are any
+  const teamsContainer = document.getElementsByClassName('teams-container')[0]
+  while (teamsContainer.firstChild) {
+    teamsContainer.removeChild(teamsContainer.firstChild)
+  }
+
   const playerFields = document.getElementsByClassName('player-field')
   const players = []
+
+  const ratingSystem = document.getElementById('rating-select').value
 
   for (const field of playerFields) {
     const player = field.value
     if (player !== '') {
       const rating = field.nextSibling.value
+
+      // make sure ratings are within specified range
+      if ((+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100'))) {
+        return window.alert('Make sure ratings are valid!')
+      }
+
       players.push({ name: player, rating: rating })
     }
   }
 
-  console.log(players)
+  const ratingSetting = ratingSelect.value
+  const numOfTeams = teamsSelect.value
+
+  let teams
+  if (ratingSetting === 'None') teams = { teams: generateRandomTeams(players.length, numOfTeams, players) }
+  else {
+    const lol = players.filter(player => player.rating === '')
+    if (lol.length > 0) return window.alert('Some players are missing ratings!')
+    teams = generateTeams(players.length, numOfTeams, players)
+  }
+
+  for (let i = 0; i < teams.teams.length; i++) {
+    const teamElement = createTeamElement(teams.teams[i], i + 1, (ratingSetting !== 'None'))
+    document.getElementsByClassName('teams-container')[0].appendChild(teamElement)
+  }
 }
 
 const ratingSelect = document.getElementById('rating-select')

@@ -125,14 +125,11 @@ function generateTeamsListener () {
 
   // clear any team elements if there are any
   const teamsContainer = document.getElementsByClassName('teams-container')[0]
-  while (teamsContainer.firstChild) {
-    teamsContainer.removeChild(teamsContainer.firstChild)
-  }
+  while (teamsContainer.firstChild) teamsContainer.removeChild(teamsContainer.firstChild)
 
   const playerFields = document.getElementsByClassName('player-field')
-  const players = []
-
   const ratingSystem = document.getElementById('rating-select').value
+  const players = []
 
   for (const field of playerFields) {
     const player = field.value
@@ -140,7 +137,7 @@ function generateTeamsListener () {
       const rating = field.nextSibling.value
 
       // make sure ratings are within specified range
-      if ((+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100'))) {
+      if ((ratingSystem !== 'None') && (+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100'))) {
         return window.alert('Make sure ratings are valid!')
       }
 
@@ -148,14 +145,17 @@ function generateTeamsListener () {
     }
   }
 
+  // alert if no player names have been entered
+  if (players.length === 0) return window.alert('There are no players!')
+
   const ratingSetting = ratingSelect.value
   const numOfTeams = teamsSelect.value
 
   let teams
   if (ratingSetting === 'None') teams = { teams: generateRandomTeams(players.length, numOfTeams, players) }
   else {
-    const lol = players.filter(player => player.rating === '')
-    if (lol.length > 0) return window.alert('Some players are missing ratings!')
+    const emptyRatings = players.filter(player => player.rating === '')
+    if (emptyRatings.length > 0) return window.alert('Some players are missing ratings!')
     teams = generateTeams(players.length, numOfTeams, players)
   }
 

@@ -1,6 +1,6 @@
 'use strict'
 
-function generateTeams (numOfPlayers, numOfTeams, playerData) {
+function generateRandomTeams (numOfPlayers, numOfTeams, playerData) {
   const teams = []
   for (let i = 0; i < numOfTeams; i++) teams.push([])
   // randomly distribute players into teams
@@ -9,6 +9,12 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
     teams[i % numOfTeams].push(playerData[randomIdx])
     playerData.splice(randomIdx, 1)
   }
+
+  return teams
+}
+
+function generateTeams (numOfPlayers, numOfTeams, playerData) {
+  const teams = generateRandomTeams(numOfPlayers, numOfTeams, playerData)
 
   const games = []
   // each iteration, swap a random player from highest rated team with random player from lowest rated team
@@ -49,7 +55,7 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
   return bestTeams
 }
 
-export { generateTeams }
+export { generateRandomTeams, generateTeams }
 
 // const mockPlayerData = JSON.parse(`[
 //   { "name": "hamza", "rating": "10" },

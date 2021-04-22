@@ -22,6 +22,11 @@ function createPlayerAndRatingFields () {
   return container
 }
 
+function appendPlayerAndRatingField () {
+  const playersContainer = document.getElementsByClassName('players-container')[0]
+  playersContainer.appendChild(createPlayerAndRatingFields())
+}
+
 function createTeamElement (team, teamNumber, useRatings) {
   const container = document.createElement('div')
   container.className = 'team-container'
@@ -76,12 +81,9 @@ function populateSelects () {
   }
 }
 
-for (let i = 0; i < 10; i++) {
-  const playersContainer = document.getElementsByClassName('players-container')[0]
-  playersContainer.appendChild(createPlayerAndRatingFields())
-}
-
 populateSelects()
+
+for (let i = 0; i < 10; i++) appendPlayerAndRatingField()
 
 // UI event listeners and functions
 
@@ -103,6 +105,7 @@ function teamsSelectUpdate () {
 
 function addPlayerListener () {
   console.log('add player')
+  appendPlayerAndRatingField()
 }
 
 function generateTeamsListener () {

@@ -49,6 +49,8 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
   return bestTeams
 }
 
+export { generateTeams }
+
 // const mockPlayerData = JSON.parse(`[
 //   { "name": "hamza", "rating": "10" },
 //   { "name": "mp", "rating": "1" },

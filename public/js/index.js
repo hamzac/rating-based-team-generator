@@ -1,5 +1,7 @@
 'use strict'
 
+import { generateTeams } from './teams.js'
+
 // Create and populate UI elements
 
 function createPlayerAndRatingFields () {
@@ -66,11 +68,11 @@ function teamsSelectUpdate () {
   console.log('teams select update')
 }
 
-function addPlayer () {
+function addPlayerListener () {
   console.log('add player')
 }
 
-function generateTeams () {
+function generateTeamsListener () {
   console.log('generate teams')
   const playerFields = document.getElementsByClassName('player-field')
   const players = []
@@ -95,5 +97,5 @@ const generateTeamsButton = document.getElementById('generate-teams-button')
 ratingSelect.addEventListener('change', ratingSelectUpdate)
 playersSelect.addEventListener('change', playersSelectUpdate)
 teamsSelect.addEventListener('change', teamsSelectUpdate)
-addPlayerButton.addEventListener('click', addPlayer)
-generateTeamsButton.addEventListener('click', generateTeams)
+addPlayerButton.addEventListener('click', addPlayerListener)
+generateTeamsButton.addEventListener('click', generateTeamsListener)

@@ -57,7 +57,11 @@ populateSelects()
 // UI event listeners and functions
 
 function ratingSelectUpdate () {
-  console.log('rating select update')
+  const ratingSetting = this.value
+  const ratingFields = document.getElementsByClassName('rating-field')
+  for (const ratingField of ratingFields) {
+    ratingField.style.display = (ratingSetting === 'None') ? 'none' : ''
+  }
 }
 
 function playersSelectUpdate () {

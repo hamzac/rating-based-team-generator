@@ -88,10 +88,10 @@ for (let i = 0; i < 10; i++) appendPlayerAndRatingField()
 // UI event listeners and functions
 
 function ratingSelectUpdate () {
-  const ratingSetting = this.value
+  const ratingSystem = this.value
   const ratingFields = document.getElementsByClassName('rating-field')
   for (const ratingField of ratingFields) {
-    ratingField.style.display = (ratingSetting === 'None') ? 'none' : ''
+    ratingField.style.display = (ratingSystem === 'None') ? 'none' : ''
   }
 }
 
@@ -118,6 +118,10 @@ function teamsSelectUpdate () {
 function addPlayerListener () {
   console.log('add player')
   appendPlayerAndRatingField()
+
+  if (document.getElementById('rating-select').value === 'None') {
+    document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
+  }
 }
 
 function generateTeamsListener () {
@@ -129,6 +133,7 @@ function generateTeamsListener () {
 
   const playerFields = document.getElementsByClassName('player-field')
   const ratingSystem = document.getElementById('rating-select').value
+  const numOfTeams = document.getElementById('teams-select').value
   const players = []
 
   for (const field of playerFields) {
@@ -137,7 +142,7 @@ function generateTeamsListener () {
       const rating = field.nextSibling.value
 
       // make sure ratings are within specified range
-      if ((ratingSystem !== 'None') && (+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100'))) {
+      if ((ratingSystem !== 'None') && ((+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100')))) {
         return window.alert('Make sure ratings are valid!')
       }
 
@@ -148,11 +153,8 @@ function generateTeamsListener () {
   // alert if no player names have been entered
   if (players.length === 0) return window.alert('There are no players!')
 
-  const ratingSetting = ratingSelect.value
-  const numOfTeams = teamsSelect.value
-
   let teams
-  if (ratingSetting === 'None') teams = { teams: generateRandomTeams(players.length, numOfTeams, players) }
+  if (ratingSystem === 'None') teams = { teams: generateRandomTeams(players.length, numOfTeams, players) }
   else {
     const emptyRatings = players.filter(player => player.rating === '')
     if (emptyRatings.length > 0) return window.alert('Some players are missing ratings!')
@@ -160,7 +162,7 @@ function generateTeamsListener () {
   }
 
   for (let i = 0; i < teams.teams.length; i++) {
-    const teamElement = createTeamElement(teams.teams[i], i + 1, (ratingSetting !== 'None'))
+    const teamElement = createTeamElement(teams.teams[i], i + 1, (ratingSystem !== 'None'))
     document.getElementsByClassName('teams-container')[0].appendChild(teamElement)
   }
 }

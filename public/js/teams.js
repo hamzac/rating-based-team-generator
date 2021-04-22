@@ -18,21 +18,25 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
 
   const games = []
   // each iteration, swap a random player from highest rated team with random player from lowest rated team
-  for (let k = 0; k < numOfPlayers ** 2; k++) {
+  // for (let k = 0; k < numOfPlayers ** 2; k++) {
+  for (let k = 0; k < 1; k++) {
     const ratings = teams.map((team) => {
       return team.reduce((sum, player) => sum + +player.rating, 0)
     })
     // find index of team with highest rating, find team with lowest
     const highestRatedTeamIdx = ratings.indexOf(Math.max(...ratings))
     const lowestRatedTeamIdx = ratings.indexOf(Math.min(...ratings))
-    const highestRatedTeamRandomIdx = Math.floor(Math.random() * teams[highestRatedTeamIdx].length)
-    const lowestRatedTeamRandomIdx = Math.floor(Math.random() * teams[lowestRatedTeamIdx].length)
-    const randomPlayer1 = teams[highestRatedTeamIdx][highestRatedTeamRandomIdx]
-    const randomPlayer2 = teams[lowestRatedTeamIdx][lowestRatedTeamRandomIdx]
-    teams[highestRatedTeamIdx].splice(highestRatedTeamRandomIdx, 1)
-    teams[lowestRatedTeamIdx].splice(lowestRatedTeamRandomIdx, 1)
-    teams[highestRatedTeamIdx].push(randomPlayer2)
-    teams[lowestRatedTeamIdx].push(randomPlayer1)
+    // if highest and lowest rated teams have same rating, then leave teams unchanged
+    if (highestRatedTeamIdx !== lowestRatedTeamIdx) {
+      const highestRatedTeamRandomIdx = Math.floor(Math.random() * teams[highestRatedTeamIdx].length)
+      const lowestRatedTeamRandomIdx = Math.floor(Math.random() * teams[lowestRatedTeamIdx].length)
+      const randomPlayer1 = teams[highestRatedTeamIdx][highestRatedTeamRandomIdx]
+      const randomPlayer2 = teams[lowestRatedTeamIdx][lowestRatedTeamRandomIdx]
+      teams[highestRatedTeamIdx].splice(highestRatedTeamRandomIdx, 1)
+      teams[lowestRatedTeamIdx].splice(lowestRatedTeamRandomIdx, 1)
+      teams[highestRatedTeamIdx].push(randomPlayer2)
+      teams[lowestRatedTeamIdx].push(randomPlayer1)
+    }
 
     const newRatings = teams.map((team) => {
       return team.reduce((sum, player) => sum + +player.rating, 0)

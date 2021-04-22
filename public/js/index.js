@@ -22,6 +22,35 @@ function createPlayerAndRatingFields () {
   return container
 }
 
+function createTeamElement (team, teamNumber, useRatings) {
+  const container = document.createElement('div')
+  container.className = 'team-container'
+
+  const teamName = document.createElement('p')
+  teamName.innerText = `Team ${teamNumber}`
+  container.appendChild(teamName)
+
+  if (useRatings) {
+    let ratingSum = 0
+    for (const player of team) {
+      ratingSum += +player.rating
+    }
+    const teamRating = document.createElement('p')
+    teamRating.innerText = `Team rating: ${ratingSum}`
+    container.appendChild(teamRating)
+  }
+
+  for (const player of team) {
+    const playerHTML = document.createElement('p')
+    playerHTML.innerText = `${player.name} `
+    if (useRatings) playerHTML.innerText += `${player.rating}`
+
+    container.appendChild(playerHTML)
+  }
+
+  return container
+}
+
 function populateSelects () {
   const playersSelect = document.getElementById('players-select')
   const teamsSelect = document.getElementById('teams-select')
@@ -74,35 +103,6 @@ function teamsSelectUpdate () {
 
 function addPlayerListener () {
   console.log('add player')
-}
-
-function createTeamElement (team, teamNumber, useRatings) {
-  const container = document.createElement('div')
-  container.className = 'team-container'
-
-  const teamName = document.createElement('p')
-  teamName.innerText = `Team ${teamNumber}`
-  container.appendChild(teamName)
-
-  if (useRatings) {
-    let ratingSum = 0
-    for (const player of team) {
-      ratingSum += +player.rating
-    }
-    const teamRating = document.createElement('p')
-    teamRating.innerText = `Team rating: ${ratingSum}`
-    container.appendChild(teamRating)
-  }
-
-  for (const player of team) {
-    const playerHTML = document.createElement('p')
-    playerHTML.innerText = `${player.name} `
-    if (useRatings) playerHTML.innerText += `${player.rating}`
-
-    container.appendChild(playerHTML)
-  }
-
-  return container
 }
 
 function generateTeamsListener () {

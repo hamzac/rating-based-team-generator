@@ -83,6 +83,11 @@ function ratingSelectUpdate () {
   }
 }
 
+function hideNewRatingField () {
+  const ratingSystem = document.getElementById('rating-select').value
+  if (ratingSystem === 'None') document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
+}
+
 function playersSelectUpdate () {
   console.log('players select update')
   const playersContainer = document.getElementsByClassName('players-container')[0]
@@ -92,7 +97,10 @@ function playersSelectUpdate () {
   const playersAmountDifference = newPlayersAmount - currentPlayersAmount
 
   if (playersAmountDifference > 0) {
-    for (let i = 0; i < playersAmountDifference; i++) appendPlayerAndRatingField()
+    for (let i = 0; i < playersAmountDifference; i++) {
+      appendPlayerAndRatingField()
+      hideNewRatingField()
+    }
   }
   if (playersAmountDifference < 0) {
     for (let i = 0; i < -playersAmountDifference; i++) playersContainer.removeChild(playersContainer.lastChild)
@@ -101,11 +109,9 @@ function playersSelectUpdate () {
 
 function addPlayerListener () {
   console.log('add player')
-  appendPlayerAndRatingField()
 
-  const ratingSystem = document.getElementById('rating-select').value
-  // hide newly added rating field
-  if (ratingSystem === 'None') document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
+  appendPlayerAndRatingField()
+  hideNewRatingField()
 
   const playersSelect = document.getElementById('players-select')
   playersSelect.value = +playersSelect.value + 1

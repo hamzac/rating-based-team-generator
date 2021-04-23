@@ -11,14 +11,14 @@ function createPlayerAndRatingFields () {
   const playerField = document.createElement('input')
   playerField.type = 'text'
   playerField.className = 'player-field'
+  container.appendChild(playerField)
 
   const ratingField = document.createElement('input')
   ratingField.type = 'text'
   ratingField.className = 'rating-field'
   ratingField.type = 'number'
-
-  container.appendChild(playerField)
   container.appendChild(ratingField)
+
   return container
 }
 
@@ -36,10 +36,8 @@ function createTeamElement (team, teamNumber, useRatings) {
   container.appendChild(teamName)
 
   if (useRatings) {
-    let ratingSum = 0
-    for (const player of team) {
-      ratingSum += +player.rating
-    }
+    const ratingSum = team.reduce((sum, player) => sum + +player.rating, 0)
+
     const teamRating = document.createElement('p')
     teamRating.innerText = `Team rating: ${ratingSum}`
     container.appendChild(teamRating)
@@ -49,7 +47,6 @@ function createTeamElement (team, teamNumber, useRatings) {
     const playerHTML = document.createElement('p')
     playerHTML.innerText = `${player.name} `
     if (useRatings) playerHTML.innerText += `${player.rating}`
-
     container.appendChild(playerHTML)
   }
 
@@ -64,9 +61,7 @@ function populateSelects () {
     const option = document.createElement('option')
     option.innerText = i
     option.value = i
-
     if (i === 10) option.selected = 'selected'
-
     playersSelect.appendChild(option)
   }
 
@@ -74,14 +69,9 @@ function populateSelects () {
     const option = document.createElement('option')
     option.innerText = i
     option.value = i
-
     teamsSelect.appendChild(option)
   }
 }
-
-populateSelects()
-
-for (let i = 0; i < 10; i++) appendPlayerAndRatingField()
 
 // UI event listeners and functions
 
@@ -109,24 +99,20 @@ function playersSelectUpdate () {
   }
 }
 
-function teamsSelectUpdate () {
-  console.log('teams select update')
-}
-
 function addPlayerListener () {
   console.log('add player')
   appendPlayerAndRatingField()
 
-  if (document.getElementById('rating-select').value === 'None') {
-    document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
-  }
+  const ratingSystem = document.getElementById('rating-select').value
+  // hide newly added rating field
+  if (ratingSystem === 'None') document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
 
-  document.getElementById('players-select').value = +document.getElementById('players-select').value + 1
+  const playersSelect = document.getElementById('players-select')
+  playersSelect.value = +playersSelect.value + 1
 }
 
 function generateTeamsListener () {
   console.log('generate teams')
-
   // clear any team elements if there are any
   const teamsContainer = document.getElementsByClassName('teams-container')[0]
   while (teamsContainer.firstChild) teamsContainer.removeChild(teamsContainer.firstChild)
@@ -134,15 +120,14 @@ function generateTeamsListener () {
   const playerFields = document.getElementsByClassName('player-field')
   const ratingSystem = document.getElementById('rating-select').value
   const numOfTeams = document.getElementById('teams-select').value
-  const players = []
 
+  const players = []
   for (const field of playerFields) {
     const player = field.value
     if (player !== '') {
       const rating = field.nextSibling.value
-
       // make sure ratings are within specified range
-      if ((ratingSystem !== 'None') && ((+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100')))) {
+      if (((+rating < 1) || ((+rating > 10) && (ratingSystem === '1-10')) || ((+rating > 100) && (ratingSystem === '1-100')))) {
         return window.alert('Make sure ratings are valid!')
       }
 
@@ -167,6 +152,8 @@ function generateTeamsListener () {
   }
 }
 
+// Main Execution
+
 const ratingSelect = document.getElementById('rating-select')
 const playersSelect = document.getElementById('players-select')
 const teamsSelect = document.getElementById('teams-select')
@@ -175,6 +162,9 @@ const generateTeamsButton = document.getElementById('generate-teams-button')
 
 ratingSelect.addEventListener('change', ratingSelectUpdate)
 playersSelect.addEventListener('change', playersSelectUpdate)
-teamsSelect.addEventListener('change', teamsSelectUpdate)
 addPlayerButton.addEventListener('click', addPlayerListener)
 generateTeamsButton.addEventListener('click', generateTeamsListener)
+
+populateSelects()
+
+for (let i = 0; i < 10; i++) appendPlayerAndRatingField()

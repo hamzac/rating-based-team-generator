@@ -59,16 +59,3 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
 }
 
 export { generateRandomTeams, generateTeams }
-
-// const mockPlayerData = JSON.parse(`[
-//   { "name": "hamza", "rating": "10" },
-//   { "name": "mp", "rating": "1" },
-//   { "name": "muj", "rating": "8" },
-//   { "name": "ali", "rating": "9" },
-//   { "name": "ibzy", "rating": "4" },
-//   { "name": "kassir", "rating": "6" },
-//   { "name": "biram", "rating": "4" },
-//   { "name": "fahim", "rating": "5" },
-//   { "name": "akram", "rating": "6" },
-//   { "name": "dbsi", "rating": "8" }
-// ]`)

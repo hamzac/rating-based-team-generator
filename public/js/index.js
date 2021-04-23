@@ -120,6 +120,8 @@ function addPlayerListener () {
   if (document.getElementById('rating-select').value === 'None') {
     document.getElementsByClassName('players-container')[0].lastChild.lastChild.style.display = 'none'
   }
+
+  document.getElementById('players-select').value = +document.getElementById('players-select').value + 1
 }
 
 function generateTeamsListener () {

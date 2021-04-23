@@ -75,8 +75,6 @@ function populateSelects () {
     option.innerText = i
     option.value = i
 
-    if (i === 2) option.seleced = 'selected'
-
     teamsSelect.appendChild(option)
   }
 }

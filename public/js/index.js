@@ -14,9 +14,12 @@ function createPlayerAndRatingFields () {
   container.appendChild(playerField)
 
   const ratingField = document.createElement('input')
-  ratingField.type = 'text'
   ratingField.className = 'rating-field'
   ratingField.type = 'number'
+  ratingField.min = 1
+  const ratingSystem = document.getElementById('rating-select').value
+  if (ratingSystem === '1-10') ratingField.max = 10
+  if (ratingSystem === '1-100') ratingField.max = 100
   container.appendChild(ratingField)
 
   return container
@@ -80,6 +83,9 @@ function ratingSelectUpdate () {
   const ratingFields = document.getElementsByClassName('rating-field')
   for (const ratingField of ratingFields) {
     ratingField.style.display = (ratingSystem === 'None') ? 'none' : ''
+    // update max values
+    if (ratingSystem === '1-10') ratingField.max = 10
+    if (ratingSystem === '1-100') ratingField.max = 100
   }
 }
 

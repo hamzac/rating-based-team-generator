@@ -26,16 +26,14 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
     const highestRatedTeamIdx = ratings.indexOf(Math.max(...ratings))
     const lowestRatedTeamIdx = ratings.indexOf(Math.min(...ratings))
     // if highest and lowest rated teams have same rating, then leave teams unchanged
-    if (highestRatedTeamIdx !== lowestRatedTeamIdx) {
-      const highestRatedTeamRandomIdx = Math.floor(Math.random() * teams[highestRatedTeamIdx].length)
-      const lowestRatedTeamRandomIdx = Math.floor(Math.random() * teams[lowestRatedTeamIdx].length)
-      const randomPlayer1 = teams[highestRatedTeamIdx][highestRatedTeamRandomIdx]
-      const randomPlayer2 = teams[lowestRatedTeamIdx][lowestRatedTeamRandomIdx]
-      teams[highestRatedTeamIdx].splice(highestRatedTeamRandomIdx, 1)
-      teams[lowestRatedTeamIdx].splice(lowestRatedTeamRandomIdx, 1)
-      teams[highestRatedTeamIdx].push(randomPlayer2)
-      teams[lowestRatedTeamIdx].push(randomPlayer1)
-    }
+    const highestRatedTeamRandomIdx = Math.floor(Math.random() * teams[highestRatedTeamIdx].length)
+    const lowestRatedTeamRandomIdx = Math.floor(Math.random() * teams[lowestRatedTeamIdx].length)
+    const randomPlayer1 = teams[highestRatedTeamIdx][highestRatedTeamRandomIdx]
+    const randomPlayer2 = teams[lowestRatedTeamIdx][lowestRatedTeamRandomIdx]
+    teams[highestRatedTeamIdx].splice(highestRatedTeamRandomIdx, 1)
+    teams[lowestRatedTeamIdx].splice(lowestRatedTeamRandomIdx, 1)
+    teams[highestRatedTeamIdx].push(randomPlayer2)
+    teams[lowestRatedTeamIdx].push(randomPlayer1)
 
     const newRatings = teams.map((team) => {
       return team.reduce((sum, player) => sum + +player.rating, 0)
@@ -48,6 +46,8 @@ function generateTeams (numOfPlayers, numOfTeams, playerData) {
     }
 
     games.push(game)
+
+    if (highestRatedTeamIdx === lowestRatedTeamIdx) break
   }
 
   let bestTeams = games[0]

@@ -11,7 +11,7 @@ function createPlayerAndRatingFields () {
   const playerField = document.createElement('input')
   playerField.type = 'text'
   playerField.placeholder = 'Player'
-  playerField.className = 'player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
+  playerField.className = 'player-field w-3/5 mr-2 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
   container.appendChild(playerField)
 
   const ratingField = document.createElement('input')

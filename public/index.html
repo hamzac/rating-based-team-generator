@@ -8,26 +8,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <link rel="stylesheet" href="css/tailwind.css">
   <script src="js/teams.js" type="module"></script>
   <script src="js/index.js" type="module" defer></script>
   <title>Rating-based team generator</title>
 </head>
 <body>
-  <div class="main-container">
-    <div class="left-inner">
-      <p class="inner-header">Players</p>
-      <div class="players-container">
+  <div class="container flex flex-wrap mx-auto my-16 w-2/5 text-gray-800">
+
+    <div class="w-3/5">
+      <p class="text-2xl mb-4">Players</p>
+      <div id="players-container">
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
+        <div class="player-div my-2">
+          <input type="text" placeholder="Player" class="player-field mr-2 w-8/10 py-2 px-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+          <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+        </div>
       </div>
-      <button class="button" id="add-player-button">Add Player</button>
     </div>
 
-    <div class="right-inner">
-      <p class="inner-header">Settings</p>
-      <div class="settings-container">
+    <div class="w-2/5">
+      <p class="text-2xl mb-4">Settings</p>
+      <div id="settings-container">
         <div>
-          <span>Rating</span>
-          <select name="rating" id="rating-select">
+          <span>Rating System</span>
+          <select name="rating" id="rating-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded">
             <option value="None">None</option>
             <option value="1-10" selected="selected">1-10</option>
             <option value="1-100">1-100</option>
@@ -35,23 +76,46 @@
         </div>
         <div>
           <span>Players</span>
-          <select name="players" id="players-select"></select>
+          <select name="players" id="players-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded"></select>
         </div>
         <div>
           <span>Teams</span>
-          <select name="teams" id="teams-select"></select>
+          <select name="teams" id="teams-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded"></select>
         </div>
       </div>
     </div>
 
-    <div class="bottom-inner">
-      <button class="button" id="generate-teams-button">Generate Teams</button>
+    <div class="block w-full mb-2 space-x-1">
+      <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="add-player-button">Add Player</button>
+      <button class="button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" id="remove-player-button">Remove Player</button>
+    </div>
+    <div class="block w-full mb-8">
+      <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="generate-teams-button">Generate Teams</button>
     </div>
 
-    <div class="bottom-inner">
-      <p>Teams</p>
-      <div class="teams-container"></div>
+    <p class="text-2xl mb-4">Teams</p>
+    <div id="teams-container" class="container w-full flex flex-wrap">
+      <!-- <div class="w-1/2 mb-4 px-2">
+        <div class="container py-4 px-6 border border-gray-200 rounded leading-tight">
+          <p class="text-lg">Team 1</p>
+          <div class="w-full mt-2 divide-y divide-gray-100">
+            <div class="block w-full py-2">
+              <span>Hamza</span><span class="float-right">10</span>
+            </div>
+            <div class="block w-full py-2">
+              <span>Akram</span><span class="float-right">7</span>
+            </div>
+            <div class="block w-full py-2">
+              <span>Ali</span><span class="float-right">9</span>
+            </div>
+            <div class="w-full pt-2 text-gray-400">
+              <span>Team Rating:</span><span class="float-right">26</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
+
   </div>
 </body>
 </html>

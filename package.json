@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "NODE_ENV=production npm run build-css && node app.js",
+    "dev": "NODE_ENV=development nodemon app.js",
+    "build-css": "tailwindcss build src/css/tailwind.css -o public/css/tailwind.css"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "tailwindcss": "^2.1.2"
   }
 }

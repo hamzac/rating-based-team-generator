@@ -12,7 +12,7 @@ cd rating-based-team-generator
 npm install
 ```
 
-Run the express server
+Run the express server and build the css files.
 
 ```
 npm start
@@ -22,16 +22,8 @@ Go to [http://localhost:3000](http://localhost:3000).
 
 ## Example
 
-Player (Rating)
+![Example of generated teams](example.png)
 
-Team A | Team B
------------- | -------------
-da Silva (9) | Kylian (8)
-Mohamed (6) | Lionel (10)
-Kevin (8) | Virgil (8)
-Cristiano (9) | Erling (6)
-Joshua (8) | Robert (8)
-Total Rating: 40 | Total Rating: 40
 
 ## How it works
 

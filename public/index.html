@@ -61,7 +61,7 @@
           <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
         </div>
       </div>
-      
+
       <div class="block w-full mb-2 space-x-1">
         <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="add-player-button">Add Player</button>
         <button class="button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" id="remove-player-button">Remove Player</button>
@@ -73,20 +73,20 @@
 
     <div class="w-2/5">
       <p class="text-2xl mb-4">Settings</p>
-      <div id="settings-container">
-        <div>
+      <div id="settings-container" class="flex flex-wrap">
+        <div class="mr-8">
           <span>Rating System</span>
-          <select name="rating" id="rating-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded">
+          <select name="rating" id="rating-select" class="block w-20 mt-2 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded">
             <option value="None">None</option>
             <option value="1-10" selected="selected">1-10</option>
             <option value="1-100">1-100</option>
           </select>
         </div>
-        <div>
+        <div class="mr-8">
           <span>Players</span>
           <select name="players" id="players-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded"></select>
         </div>
-        <div>
+        <div class="mr-8">
           <span>Teams</span>
           <select name="teams" id="teams-select" class="block w-20 mt-1 mb-4 px-2 py-2 bg-white border border-gray-300 hover:border-gray-400 rounded"></select>
         </div>

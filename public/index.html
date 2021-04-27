@@ -61,6 +61,14 @@
           <input  type="number" min="1" max="10" class="rating-field w-16 py-2 pl-4 bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
         </div>
       </div>
+      
+      <div class="block w-full mb-2 space-x-1">
+        <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="add-player-button">Add Player</button>
+        <button class="button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" id="remove-player-button">Remove Player</button>
+      </div>
+      <div class="block w-full mb-8">
+        <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="generate-teams-button">Generate Teams</button>
+      </div>
     </div>
 
     <div class="w-2/5">
@@ -85,14 +93,6 @@
       </div>
     </div>
 
-    <div class="block w-full mb-2 space-x-1">
-      <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="add-player-button">Add Player</button>
-      <button class="button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" id="remove-player-button">Remove Player</button>
-    </div>
-    <div class="block w-full mb-8">
-      <button class="button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="generate-teams-button">Generate Teams</button>
-    </div>
-
     <p class="text-2xl mb-4">Teams</p>
     <div id="teams-container" class="container w-full flex flex-wrap">
       <!-- <div class="w-1/2 mb-4 px-2">
@@ -109,7 +109,7 @@
               <span>Ali</span><span class="float-right">9</span>
             </div>
             <div class="w-full pt-2 text-gray-400">
-              <span>Team Rating:</span><span class="float-right">26</span>
+              <span>Team Rating</span><span class="float-right">26</span>
             </div>
           </div>
         </div>

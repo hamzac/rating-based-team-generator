@@ -33,7 +33,7 @@ function appendPlayerAndRatingField () {
 
 function removeLastPlayer () {
   const playersContainer = document.getElementById('players-container')
-  playersContainer.removeChild(playersContainer.lastChild)
+  playersContainer.removeChild(playersContainer.lastElementChild)
 }
 
 function createTeamElement (team, teamNumber, useRatings) {
@@ -61,7 +61,7 @@ function createTeamElement (team, teamNumber, useRatings) {
 
     const div = document.createElement('div')
     div.className = 'w-full pt-2 text-gray-400'
-    div.innerHTML = `<span>Team Rating:</span><span class="float-right">${teamRating}</span>`
+    div.innerHTML = `<span>Team Rating</span><span class="float-right">${teamRating}</span>`
     containerContent.appendChild(div)
   }
 
@@ -103,7 +103,7 @@ function ratingSelectUpdate () {
 
 function hideNewRatingField () {
   const ratingSystem = document.getElementById('rating-select').value
-  if (ratingSystem === 'None') document.getElementById('players-container').lastChild.lastChild.style.display = 'none'
+  if (ratingSystem === 'None') document.getElementById('players-container').lastElementChild.lastElementChild.style.display = 'none'
 }
 
 function playersSelectUpdate () {
@@ -137,10 +137,13 @@ function addPlayerListener () {
 function removePlayerListener () {
   console.log('remove player')
 
-  removeLastPlayer()
-
+  const playersContainer = document.getElementById('players-container')
   const playersSelect = document.getElementById('players-select')
-  playersSelect.value = +playersSelect.value - 1
+
+  if (playersContainer.childElementCount > 2) {
+    removeLastPlayer()
+    playersSelect.value = +playersSelect.value - 1
+  }
 }
 
 function generateTeamsListener () {

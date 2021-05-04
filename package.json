@@ -1,29 +1,40 @@
 {
   "name": "rating-based-team-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "tailwindcss": "^2.1.2",
+    "web-vitals": "^1.1.1"
+  },
   "scripts": {
-    "start": "NODE_ENV=production npm run build-css && node app.js",
-    "dev": "NODE_ENV=development nodemon app.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "build-css": "tailwindcss build src/css/tailwind.css -o public/css/tailwind.css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hamzac/rating-based-team-generator.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hamzac/rating-based-team-generator/issues"
-  },
-  "homepage": "https://github.com/hamzac/rating-based-team-generator#readme",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7",
-    "tailwindcss": "^2.1.2"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

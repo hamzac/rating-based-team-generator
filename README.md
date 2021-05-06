@@ -2,6 +2,8 @@
 
 A web application that allows users to generate fair teams based on player ratings.
 
+Built with React.
+
 ## Usage
 
 Clone the repo and install the dependencies
@@ -12,10 +14,10 @@ cd rating-based-team-generator
 npm install
 ```
 
-Run the express server and build the css files.
+Run the app locally
 
 ```
-npm start
+npm run start
 ```
 
 Go to [http://localhost:3000](http://localhost:3000).
@@ -24,14 +26,13 @@ Go to [http://localhost:3000](http://localhost:3000).
 
 ![Example of generated teams](example.png)
 
-
 ## How it works
 
 The task of finding (reasonably) fair and balanced teams given a set of players and a measure of their strength can be described as a special case of the [Partition Problem](https://en.wikipedia.org/wiki/Partition_problem). This is the problem of determining "whether a given multiset S of positive integers can be partitioned into two subsets S1 and S2 such that the sum of the numbers in S1 equals the sum of the numbers in S2".
 
 In our case, equally sized teams (or almost if there is an odd number of players) is a constraint. Also, we want to be able to determine k partitions for k teams, not just 2. Moreover, an important feature is the ability to get different but fair teams every time teams are generated. We could determine all possible partitions, but this would be computationally expensive. Instead, the algorithm is able to non-determistically arrive at a different single solution each time.
 
-#### Algorithm
+### Algorithm
 
 1. Generate an initial set of completely random teams.
 2. Calculate the sum of player ratings for each team.

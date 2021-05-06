@@ -1,5 +1,3 @@
-'use strict'
-
 function generateRandomTeams (numOfPlayers, numOfTeams, playerData) {
   const teams = []
   for (let i = 0; i < numOfTeams; i++) teams.push([])
